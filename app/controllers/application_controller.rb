@@ -5,18 +5,20 @@ class ApplicationController < ActionController::Base
 
 
   def user_signed_in? 
-    admin_signed_in? || bibliotecario_signed_in?
+    admin_signed_in? || bibliotecario_signed_in? || usuario_signed_in?
   end
 
   def current_user
     return current_admin if admin_signed_in?
     return current_bibliotecario if bibliotecario_signed_in?
+    return current_usuario if usuario_signed_in?
     nil
   end
 
   def current_user_type
   return :admin if admin_signed_in?
   return :bibliotecario if bibliotecario_signed_in?
+  return :usuario if usuario_signed_in?
   nil
   end
 

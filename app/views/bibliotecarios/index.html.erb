@@ -1,0 +1,12 @@
+<h1>Bibliotecarios</h1>
+
+<% @bibliotecarios.each do |bibliotecario| %>
+
+    <div>
+        <p><%= bibliotecario.nome %></p>
+        <p><%= bibliotecario.email %></p>
+
+        <%= button_to "Excluir Bibliotecário", bibliotecario, method: :delete, data: { turbo_confirm: "Você tem certeza?" }%>
+    </div>
+
+<% end %>
