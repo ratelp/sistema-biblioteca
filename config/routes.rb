@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :livros
   resources :categoria
   
   get "login", to:  "sessions#new"

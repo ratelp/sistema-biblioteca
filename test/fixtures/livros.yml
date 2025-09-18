@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  autor: MyString
+  titulo: MyString
+  categoria: one
+  status: false
+  observacoes: MyText
+
+two:
+  autor: MyString
+  titulo: MyString
+  categoria: two
+  status: false
+  observacoes: MyText
