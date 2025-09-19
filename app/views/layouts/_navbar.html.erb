@@ -2,7 +2,7 @@
     <%= link_to "SAIR", logout_path, data: { turbo_method: :delete } %>
 
     <% if current_user_type == :admin %>
-        <%= link_to "Cadastrar Bibliotecário", new_bibliotecario_path %>
+        <%= link_to "Bibliotecários", bibliotecarios_path %>
     <% end %>
 
 <% end %>

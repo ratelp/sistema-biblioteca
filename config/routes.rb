@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   devise_for :usuarios
   resources :livros
   resources :categoria
-  
+
   get "login", to:  "sessions#new"
   post "login", to:  "sessions#create"
   delete "logout", to:  "sessions#destroy"
 
-  devise_for :bibliotecarios, skip: [:registrations]
-  resources :bibliotecarios , only: [:index, :new, :create, :destroy]
+  devise_for :bibliotecarios, controllers: {
+    passwords: "passwords"
+  }
+  resources :bibliotecarios, only: [ :index, :new, :create, :destroy ]
   devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
