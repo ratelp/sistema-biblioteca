@@ -1,6 +1,10 @@
 <% if user_signed_in? %>
     <%= link_to "SAIR", logout_path, data: { turbo_method: :delete } %>
 
+    <%= link_to "Categorias", categorias_path %>
+
+    <%= link_to "Livros", livros_path %>
+
     <% if current_user_type == :admin %>
         <%= link_to "Bibliotecários", bibliotecarios_path %>
     <% end %>

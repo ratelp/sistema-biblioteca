@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_19_011243) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_20_180914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,7 +40,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_19_011243) do
     t.index ["reset_password_token"], name: "index_bibliotecarios_on_reset_password_token", unique: true
   end
 
-  create_table "categoria", force: :cascade do |t|
+  create_table "categorias", force: :cascade do |t|
     t.string "nome", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,5 +73,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_19_011243) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "livros", "categoria", column: "categoria_id"
+  add_foreign_key "livros", "categorias"
 end

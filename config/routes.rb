@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :usuarios
+  devise_for :usuarios, skip: [ :sessions, :registrations, :passwords ]
   resources :livros
-  resources :categoria
+  resources :categorias
 
+  # utilizando login unificado entre usuarios e administradores
   get "login", to:  "sessions#new"
   post "login", to:  "sessions#create"
   delete "logout", to:  "sessions#destroy"
@@ -12,14 +13,17 @@ Rails.application.routes.draw do
     registrations: "registrations"
   }
   resources :bibliotecarios, only: [ :index, :new, :create, :destroy ]
+
+  # para alteração de senha no primeiro login
   as :bibliotecario do
     get   "bibliotecarios/senhaEdit" => "registrations#edit",   as: :edit_bibliotecario_registration
     patch "bibliotecarios"      => "registrations#update", as: :bibliotecario_registration
     put   "bibliotecarios"      => "registrations#update"
   end
 
+  devise_for :admin, skip: [ :sessions, :registrations, :passwords ]
 
-  devise_for :admins, skip: [ :sessions ]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
