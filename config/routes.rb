@@ -7,11 +7,19 @@ Rails.application.routes.draw do
   post "login", to:  "sessions#create"
   delete "logout", to:  "sessions#destroy"
 
-  devise_for :bibliotecarios, controllers: {
-    passwords: "passwords"
+  devise_for :bibliotecarios, skip: [ :sessions ], controllers: {
+    passwords: "passwords",
+    registrations: "registrations"
   }
   resources :bibliotecarios, only: [ :index, :new, :create, :destroy ]
-  devise_for :admins
+  as :bibliotecario do
+    get   "bibliotecarios/senhaEdit" => "registrations#edit",   as: :edit_bibliotecario_registration
+    patch "bibliotecarios"      => "registrations#update", as: :bibliotecario_registration
+    put   "bibliotecarios"      => "registrations#update"
+  end
+
+
+  devise_for :admins, skip: [ :sessions ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

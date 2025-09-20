@@ -13,6 +13,8 @@ Admin.find_or_create_by!(email: "admin@example.com") do |admin|
 end
 
 Bibliotecario.find_or_create_by!(email: "bibliotecario@example.com") do |bibliotecario|
+  bibliotecario.nome = "bibliotecario"
   bibliotecario.password = "password123"
   bibliotecario.password_confirmation = "password123"
+  bibliotecario.must_change_password = true
 end
