@@ -23,13 +23,9 @@
 
   <div>
     <%= form.label :categoria_id, style: "display: block" %>
-    <%= form.text_field :categoria_id %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.checkbox :status %>
-  </div>
+    <%= form.select :categoria_id, @categorias.map { |pt| [pt.nome.titleize, pt.id] },
+                                                     { prompt: "Selecione categoria" } %>
+  </div> 
 
   <div>
     <%= form.label :observacoes, style: "display: block" %>

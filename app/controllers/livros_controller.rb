@@ -1,4 +1,5 @@
 class LivrosController < ApplicationController
+  before_action :set_categories, only: [ :new, :create, :edit, :update, ]
   before_action :set_livro, only: %i[ show edit update destroy ]
 
   # GET /livros or /livros.json
@@ -63,8 +64,12 @@ class LivrosController < ApplicationController
       @livro = Livro.find(params.expect(:id))
     end
 
+    def set_categories
+      @categorias = Categoria.all
+    end
+
     # Only allow a list of trusted parameters through.
     def livro_params
-      params.expect(livro: [ :autor, :titulo, :categoria_id, :status, :observacoes ])
+      params.expect(livro: [ :autor, :titulo, :categoria_id,  :observacoes ])
     end
 end
