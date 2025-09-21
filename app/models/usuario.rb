@@ -4,5 +4,5 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :emprestimo
+  has_many :emprestimos
 end

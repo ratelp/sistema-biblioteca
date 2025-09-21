@@ -2,28 +2,31 @@ class EmprestimosController < ApplicationController
   before_action :set_livro, only: [ :new, :create ]
 
   def new
-    @emprestimo = Emprestimo.new
+    @emprestimo = @livro.emprestimos.build
   end
 
   def create
-    @emprestimo = Emprestimo.new(emprestimo_params)
 
-    respond_to do |format|
+    emprestimo = params[:emprestimo]
+    @usuario = Usuario.find_by(cpf: emprestimo[:cpf])
+
+    if @usuario&.valid_password?(emprestimo[:password])
+      @emprestimo = @livro.emprestimos.build(usuario: @usuario)
       if @emprestimo.save
-        format.html { redirect_to @emprestimo, notice: "Emprestimo was successfully created." }
-        format.json { render :show, status: :created, location: @emprestimo }
+        @livro.emprestado!
+        redirect_to @livro, notice: "Livro emprestado com sucesso!"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @emprestimo.errors, status: :unprocessable_entity }
+        flash.now[:alert] = "Erro ao criar empréstimo."
+        render :new, status: :unprocessable_entity
       end
+    else
+      @emprestimo = @livro.emprestimos.build
+      flash.now[:alert] = "CPF ou senha incorretos."
+      render :new, status: :unprocessable_entity
     end
   end
 
   def set_livro
     @livro = Livro.find(params[:livro_id])
-  end
-
-  def emprestimo_params
-    params.expect(emprestimo: [:livro_id, :usuario_id])
   end
 end

@@ -6,5 +6,7 @@
   <%= link_to "Edit this livro", edit_livro_path(@livro) %> |
   <%= link_to "Back to livros", livros_path %>
 
+  <%= link_to "Emprestar", new_livro_emprestimo_path(@livro)%>
+
   <%= button_to "Destroy this livro", @livro, method: :delete %>
 </div>
