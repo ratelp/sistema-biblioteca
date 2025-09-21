@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :usuarios, skip: [ :sessions, :registrations, :passwords ]
-  resources :livros
+
+  resources :usuarios, only: [ :new, :create ]
   resources :categorias
+
+  resources :livros do
+    resources :emprestimos, only: [ :new, :create ]
+  end
 
   # utilizando login unificado entre usuarios e administradores
   get "login", to:  "sessions#new"

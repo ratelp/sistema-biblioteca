@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_20_180914) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_21_195033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -46,6 +46,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_20_180914) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "emprestimos", force: :cascade do |t|
+    t.bigint "livro_id", null: false
+    t.bigint "usuario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "devolvido", default: false
+    t.index ["livro_id"], name: "index_emprestimos_on_livro_id"
+    t.index ["usuario_id"], name: "index_emprestimos_on_usuario_id"
+  end
+
   create_table "livros", force: :cascade do |t|
     t.string "autor", null: false
     t.string "titulo", null: false
@@ -73,5 +83,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_20_180914) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "emprestimos", "livros"
+  add_foreign_key "emprestimos", "usuarios"
   add_foreign_key "livros", "categorias"
 end

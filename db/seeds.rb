@@ -18,3 +18,11 @@ Bibliotecario.find_or_create_by!(email: "bibliotecario@example.com") do |bibliot
   bibliotecario.password_confirmation = "password123"
   bibliotecario.must_change_password = true
 end
+
+categoria = Categoria.find_or_create_by!(nome: "Romance")
+
+Livro.find_or_create_by!(titulo: "Belo livro") do |livro|
+  livro.autor = "Belo autor"
+  livro.categoria_id = categoria.id
+  livro.observacoes = "Belas Observações"
+end

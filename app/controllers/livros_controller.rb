@@ -1,5 +1,6 @@
 class LivrosController < ApplicationController
-  before_action :set_categories, only: [ :new, :create, :edit, :update, ]
+  before_action :authenticate_user!
+  before_action :set_categories, only: [ :new, :create, :edit, :update ]
   before_action :set_livro, only: %i[ show edit update destroy ]
 
   # GET /livros or /livros.json

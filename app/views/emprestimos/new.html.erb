@@ -1,0 +1,18 @@
+<h1>Cadastrar Emprestimo de <%= @livro.titulo  %></h1>
+
+<%= form_with(model: [@livro, @emprestimo]) do |form| %>
+        
+        <div>
+            <%= form.label :cpf, style: "display: block" %>
+            <%= form.text_field :cpf %>
+        </div> 
+
+        <div>
+            <%= form.label :password, style: "display: block" %>
+            <%= form.password_field :password %>
+        </div> 
+
+        <div>
+          <%= form.submit %>
+        </div>
+<% end %>
