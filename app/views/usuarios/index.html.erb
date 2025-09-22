@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<p>Usuários:</p>
+
+<%= link_to "Novo usuário", new_usuario_path %>
+
+<% @usuarios.each do |usuario| %>
+
+<div>
+    <p>
+        <strong>Nome:</strong>
+        <%= usuario.name %>
+    </p>
+
+    <p>
+        <strong>Cpf:</strong>
+        <%= usuario.cpf %>
+    </p>
+
+    <div>
+        <%= link_to "Mostrar usuaŕio", usuario_path(usuario) %>
+    </div>
+
+  <br>
+</div>
+
+<% end %>
+

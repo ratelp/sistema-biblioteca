@@ -5,7 +5,15 @@ class Emprestimo < ApplicationRecord
   validate :livro_deve_estar_disponivel, on: :create
 
   def data_devolucao
-    (created_at + 15.days).to_date
+    date = created_at
+    days_added = 0
+
+    while days_added < 15
+      date += 1.day
+      days_added += 1 unless date.saturday? || date.sunday?
+    end
+
+    date.to_date
   end
 
   def livro_deve_estar_disponivel

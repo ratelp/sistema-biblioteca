@@ -16,6 +16,10 @@ module SistemaBiblioteca
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+     # Set Rails default timezone
+    config.time_zone = 'America/Sao_Paulo'
+
+    config.i18n.default_locale = :'pt-BR'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

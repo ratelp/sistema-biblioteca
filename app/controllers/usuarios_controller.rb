@@ -1,6 +1,16 @@
 class UsuariosController < ApplicationController
   before_action :authenticate_user!
   
+    def index
+      @usuarios = Usuario.all
+    end
+  
+  def show
+    @usuario = Usuario.find(params.expect(:id))
+
+    @emprestimo_atual = @usuario.emprestimos.order(created_at: :desc).first
+  end
+
   def new
     @usuario = Usuario.new
   end
@@ -15,7 +25,7 @@ class UsuariosController < ApplicationController
 
     if @usuario.save
       UsuarioMailer.with(user: @usuario, password: random_password).welcome_email.deliver_later
-      redirect_to root_path, notice: "usuario foi criado com sucesso."
+      redirect_to @usuario, notice: "usuario foi criado com sucesso."
     else
       render :new, status: :unprocessable_entity
     end

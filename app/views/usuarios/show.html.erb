@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<p>Usuário:</p>
+
+<div>
+  <p>
+    <strong>Nome:</strong>
+    <%= @usuario.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @usuario.email %>
+  </p>
+
+  <p>
+    <strong>Cpf:</strong>
+    <%= @usuario.cpf %>
+  </p>
+
+  <p>
+    <strong>Número:</strong>
+    <%= @usuario.number %>
+  </p>
+
+  <% if @usuario.emprestimos.exists? %>
+  <p>
+    <strong>Livro alugado:</strong>
+    <%= link_to "Livro #{@emprestimo_atual.livro.titulo}", livro_path(@emprestimo_atual.livro.id)%>
+    <br>
+    <strong>Data de devolução máxima:</strong>
+    <%= l @emprestimo_atual.data_devolucao %>
+    
+  </p>
+  <% end %>
+</div>
+
+
+<div>
+  <%= link_to "Retornar", usuarios_path %>
+</div>

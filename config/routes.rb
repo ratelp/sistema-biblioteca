@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :usuarios, skip: [ :sessions, :registrations, :passwords ]
 
-  resources :usuarios, only: [ :new, :create ]
+  resources :usuarios, only: [ :new, :create, :index, :show ]
   resources :categorias
 
   resources :livros do
