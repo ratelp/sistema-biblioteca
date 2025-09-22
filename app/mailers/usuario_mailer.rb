@@ -5,7 +5,7 @@ class UsuarioMailer < ApplicationMailer
   def welcome_email
     @user = params[:user]
     @password = params[:password]
-    mail(to: @user.email, subject: "Welcome to the Library System")
+    mail(to: @user.email, subject: "Bem vindo a biblioteca Municipal Ney Pontes!")
   end
 
 end
