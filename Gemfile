@@ -45,7 +45,7 @@ gem "thruster", require: false
 
 gem 'devise'
 gem 'dotenv-rails'
-gem 'letter_opener'
+
 
 
 group :development, :test do

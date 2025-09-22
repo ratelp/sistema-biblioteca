@@ -1,4 +1,5 @@
 class EmprestimosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_livro, only: [ :new, :create ]
 
   def new
