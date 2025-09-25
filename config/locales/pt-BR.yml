@@ -3,6 +3,7 @@ pt-BR:
   activerecord:
     attributes:
       user:
+        email: "Email"
         password: "Senha"
   sessions:
     new:
@@ -24,5 +25,29 @@ pt-BR:
   devise:
     passwords:
       send_instructions: "Você receberá um e-mail com instruções sobre como redefinir sua senha em alguns minutos."
+      new:
+        title: "Esqueceu sua senha?"
+        submit: "Enviar instruções para redefinir senha"
+        email_placeholder: "seu.email@exemplo.com"
+      edit:
+        title: "Altere sua senha"
+        new_password: "Nova senha"
+        confirm_new_password: "Confirme sua nova senha"
+        submit: "Alterar minha senha"
+        minimum_password_length: "mínimo de %{count} caracteres"
     failure:
       unauthenticated: "Você precisa fazer login ou se registrar antes de continuar."
+    shared:
+      links:
+        forgot_your_password: "Esqueceu sua senha?"
+        sign_in: "Entrar"
+        sign_up: "Cadastre-se"
+  errors:
+    messages:
+      not_saved:
+        one: "1 erro impediu que este %{resource} fosse salvo:"
+        other: "%{count} erros impediram que este %{resource} fosse salvo:"
+      not_found: "não localizado"
+      blank: "não pode ficar em branco"
+      invalid: "é inválido"
+      taken: "já está em uso"
