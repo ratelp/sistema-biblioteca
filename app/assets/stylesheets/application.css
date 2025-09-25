@@ -9,4 +9,9 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
- @import "login.css";
+@import "navbar.css";
+@import "login.css";
+
+body { 
+    margin: 0px;
+}

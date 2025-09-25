@@ -2,16 +2,20 @@
 <% is_password_change_page = (controller_name == 'registrations' && action_name.in?(['edit', 'update'])) %>
 
 <% if user_signed_in? && !is_password_change_page %>
-    <%= link_to "SAIR", logout_path, data: { turbo_method: :delete } %>
-
-    <%= link_to "Categorias", categorias_path %>
-
-    <%= link_to "Livros", livros_path %>
-
-    <%= link_to "Usuários", usuarios_path %>
-
-    <% if current_user_type == :admin %>
-        <%= link_to "Bibliotecários", bibliotecarios_path %>
-    <% end %>
-
+  <nav class="main-navbar">
+    <div class="navbar-brand">
+      <%= link_to "Biblioteca", root_path, class: "brand-link" %>
+    </div>
+    <ul class="navbar-links">
+      <li><%= link_to "Categorias", categorias_path, class: "nav-link" %></li>
+      <li><%= link_to "Livros", livros_path, class: "nav-link" %></li>
+      <li><%= link_to "Usuários", usuarios_path, class: "nav-link" %></li>
+      <% if current_user_type == :admin %>
+        <li><%= link_to "Bibliotecários", bibliotecarios_path, class: "nav-link" %></li>
+      <% end %>
+    </ul>
+    <div class="navbar-logout">
+      <%= link_to "SAIR", logout_path, data: { turbo_method: :delete }, class: "logout-button" %>
+    </div>
+  </nav>
 <% end %>
