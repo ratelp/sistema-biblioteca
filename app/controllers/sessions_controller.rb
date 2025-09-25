@@ -12,25 +12,25 @@ class SessionsController < ApplicationController
       sign_in(role_class.name.underscore.to_sym, user)
       wich_path(user)
     else
-      redirect_to login_path, alert: "Senha ou email inválidos"
+      redirect_to login_path, alert: t(".invalid_login")
     end
   end
 
   def destroy
     sign_out(current_user_type) if user_signed_in?
-    redirect_to login_path, notice: "Deslogado com sucesso"
+    redirect_to login_path, notice: t(".logged_out")
   end
 
   def wich_path(user)
     if user.is_a?(Bibliotecario) && user.must_change_password == true
-      redirect_to edit_bibliotecario_registration_path, notice: "Primeiro login, faça mudança de senha"; return
+      redirect_to edit_bibliotecario_registration_path, notice: t(".first_login_notice"); return
     end
-    redirect_to root_path, notice: "Logado com sucesso"
+    redirect_to root_path, notice: t(".logged_in")
   end
 
   def verify_user_is_logged_in
     if current_user
-      redirect_to root_path, notice: "Já está logado"
+      redirect_to root_path, notice: t(".already_logged_in")
     end
   end
 end

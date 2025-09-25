@@ -1,7 +1,28 @@
 pt-BR:
-  date:
-    formats:
-      default: "%d/%m/%Y"
-  time:
-    formats:
-      default: "%d/%m/%Y %H:%M"
+  hello: "Olá Mundo"
+  activerecord:
+    attributes:
+      user:
+        password: "Senha"
+  sessions:
+    new:
+      title: "Entrar"
+      email_placeholder: "seu.email@exemplo.com"
+      password_placeholder: "Sua senha"
+      login_as: "Entrar como"
+      submit: "Login"
+      forgot_password: "Esqueceu a senha de Bibliotecário?"
+    create:
+      invalid_login: "Email ou senha inválidos."
+      logged_in: "Logado com sucesso."
+    destroy:
+      logged_out: "Deslogado com sucesso."
+    verify_user_is_logged_in:
+      already_logged_in: "Você já está logado."
+    wich_path:
+      first_login_notice: "Primeiro login, por favor, altere sua senha."
+  devise:
+    passwords:
+      send_instructions: "Você receberá um e-mail com instruções sobre como redefinir sua senha em alguns minutos."
+    failure:
+      unauthenticated: "Você precisa fazer login ou se registrar antes de continuar."
