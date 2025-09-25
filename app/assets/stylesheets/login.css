@@ -1,5 +1,5 @@
 
-body.sessions-new, body.passwords-new, body.passwords-create, body.passwords-edit, body.passwords-update {
+body.sessions-new, body.passwords-new, body.passwords-create, body.passwords-edit, body.passwords-update, body.registrations-edit, body.registrations-update {
   background-color: #f8f9fa;
   font-family: sans-serif;
   display: flex;

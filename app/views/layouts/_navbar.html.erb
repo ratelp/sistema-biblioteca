@@ -1,4 +1,7 @@
-<% if user_signed_in? %>
+
+<% is_password_change_page = (controller_name == 'registrations' && action_name.in?(['edit', 'update'])) %>
+
+<% if user_signed_in? && !is_password_change_page %>
     <%= link_to "SAIR", logout_path, data: { turbo_method: :delete } %>
 
     <%= link_to "Categorias", categorias_path %>

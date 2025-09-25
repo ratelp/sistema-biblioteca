@@ -35,6 +35,12 @@ pt-BR:
         confirm_new_password: "Confirme sua nova senha"
         submit: "Alterar minha senha"
         minimum_password_length: "mínimo de %{count} caracteres"
+    registrations:
+      edit:
+        title: "Atualize sua senha"
+        new_password: "Nova senha"
+        confirm_new_password: "Confirme a nova senha"
+        update: "Atualizar"
     failure:
       unauthenticated: "Você precisa fazer login ou se registrar antes de continuar."
     shared:
