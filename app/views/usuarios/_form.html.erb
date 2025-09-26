@@ -1,15 +1,6 @@
 <%= form_with(model: usuario, class: "content-form") do |form| %>
-  <% if usuario.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <h2><%= t('errors.messages.not_saved', count: usuario.errors.count, resource: Usuario.model_name.human) %></h2>
-      <ul>
-        <% usuario.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render "shared/flash" %>
+  
   <div data-controller="mask">
     <div class="form-group">
       <%= form.label :name, class: "form-label" %>

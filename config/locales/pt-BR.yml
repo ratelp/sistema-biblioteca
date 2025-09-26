@@ -6,10 +6,14 @@ pt-BR:
         email: "Email"
         password: "Senha"
     models:
+      bibliotecario: "Bibliotecário"
       emprestimo: "Empréstimo"
       livro: "Livro"
       usuario: "Usuário"
     attributes:
+      bibliotecario:
+        nome: "Nome"
+        email: "Email"
       livro:
         titulo: "Título"
         autor: "Autor"
@@ -58,6 +62,7 @@ pt-BR:
         new_password: "Nova senha"
         confirm_new_password: "Confirme a nova senha"
         update: "Atualizar"
+      updated: "Sua conta foi atualizada com sucesso."
     failure:
       unauthenticated: "Você precisa fazer login ou se registrar antes de continuar."
     shared:
@@ -115,6 +120,13 @@ pt-BR:
     back_to_usuarios: "Voltar para usuários"
     edit:
       title: "Editar Usuário"
+  bibliotecarios:
+    index:
+      title: "Bibliotecários"
+    new:
+      title: "Novo Bibliotecário"
+    _bibliotecario_row:
+      destroy: "Excluir"
   date:
     formats:
       default: "%d/%m/%Y"

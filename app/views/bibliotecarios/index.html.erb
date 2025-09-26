@@ -1,14 +1,25 @@
-<h1>Bibliotecarios</h1>
+<% content_for :title, t('.title') %>
 
-<%= link_to "Cadastrar bibliotecário", new_bibliotecario_path%>
+<main class="content-container">
+  <%= render "shared/flash" %>
 
-<% @bibliotecarios.each do |bibliotecario| %>
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+    <%= link_to t('bibliotecarios.new.title'), new_bibliotecario_path, class: "btn btn-primary" %>
+  </div>
 
-    <div>
-        <p><%= bibliotecario.nome %></p>
-        <p><%= bibliotecario.email %></p>
-
-        <%= button_to "Excluir Bibliotecário", bibliotecario, method: :delete, data: { turbo_confirm: "Você tem certeza?" }%>
-    </div>
-
-<% end %>
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th><%= Bibliotecario.human_attribute_name(:nome) %></th>
+        <th><%= Bibliotecario.human_attribute_name(:email) %></th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bibliotecarios.each do |bibliotecario| %>
+        <%= render "bibliotecario_row", bibliotecario: bibliotecario %>
+      <% end %>
+    </tbody>
+  </table>
+</main>

@@ -47,6 +47,11 @@
   background-color: #0056b3;
 }
 
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
 .btn-secondary {
   color: #212529;
   background-color: #e2e6ea;

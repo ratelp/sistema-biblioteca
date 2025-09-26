@@ -1,14 +1,5 @@
 <%= form_with(model: categoria, class: "content-form") do |form| %>
-  <% if categoria.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <h2><%= pluralize(categoria.errors.count, "error") %> prohibited this categoria from being saved:</h2>
-      <ul>
-        <% categoria.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/flash" %>
 
   <div class="form-group">
     <%= form.label :nome, class: "form-label" %>

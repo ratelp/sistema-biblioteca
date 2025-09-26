@@ -1,0 +1,23 @@
+<%= form_with(model: bibliotecario, class: "content-form") do |form| %>
+  <%= render "shared/flash" %>
+
+  <div class="form-group">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control", required: true, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password, t('activerecord.attributes.user.password'), class: "form-label" %>
+    <%= form.password_field :password, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit t('helpers.submit.submit', model: Bibliotecario.model_name.human), class: "btn btn-primary" %>
+    <%= link_to t('helpers.back'), bibliotecarios_path, class: "btn btn-danger" %>
+  </div>
+<% end %>

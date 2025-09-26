@@ -8,16 +8,7 @@
 
   <div class="form-card">
     <%= form_with(model: [@livro, @emprestimo], class: "content-form") do |form| %>
-      <% if @emprestimo.errors.any? %>
-        <div id="error_explanation" class="alert alert-danger">
-          <h2><%= t('errors.messages.not_saved', count: @emprestimo.errors.count, resource: Emprestimo.model_name.human) %></h2>
-          <ul>
-            <% @emprestimo.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= render "shared/flash" %>
 
       <div class="form-group">
         <%= form.label :cpf, class: "form-label" %>
