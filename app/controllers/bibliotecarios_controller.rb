@@ -3,13 +3,18 @@ class BibliotecariosController < ApplicationController
   before_action :only_administrador, only: [:index, :new, :create, :destroy]
 
   def index
+    @page = params.fetch(:page, 1).to_i
+    per_page = 6
+
     query = Bibliotecario.order(:email)
 
     if params[:search].present?
       query = query.where("email ILIKE ?", "%#{params[:search]}%")
     end
 
-    @bibliotecarios = query
+    @total_bibliotecarios = query.count
+    @bibliotecarios = query.offset((@page - 1) * per_page).limit(per_page)
+    @total_pages = (@total_bibliotecarios / per_page.to_f).ceil
   end
 
   def new

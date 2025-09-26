@@ -5,13 +5,18 @@ class LivrosController < ApplicationController
 
   # GET /livros or /livros.json
   def index
+    @page = params.fetch(:page, 1).to_i
+    per_page = 6
+
     query = Livro.order(:titulo)
 
     if params[:search].present?
       query = query.where("titulo ILIKE ?", "%#{params[:search]}%")
     end
 
-    @livros = query
+    @total_livros = query.count
+    @livros = query.offset((@page - 1) * per_page).limit(per_page)
+    @total_pages = (@total_livros / per_page.to_f).ceil
   end
 
   # GET /livros/1 or /livros/1.json

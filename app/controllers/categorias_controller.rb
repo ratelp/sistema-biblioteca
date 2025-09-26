@@ -4,13 +4,18 @@ class CategoriasController < ApplicationController
 
   # GET /categorias or /categorias.json
   def index
+    @page = params.fetch(:page, 1).to_i
+    per_page = 6
+
     query = Categoria.order(:nome)
 
     if params[:search].present?
       query = query.where("nome ILIKE ?", "%#{params[:search]}%")
     end
 
-    @categorias = query
+    @total_categorias = query.count
+    @categorias = query.offset((@page - 1) * per_page).limit(per_page)
+    @total_pages = (@total_categorias / per_page.to_f).ceil
   end
 
   # GET /categorias/1 or /categorias/1.json

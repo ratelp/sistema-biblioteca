@@ -27,4 +27,20 @@
       <% end %>
     </tbody>
   </table>
+
+  <% if @total_pages.to_i > 1 %>
+    <div>
+      <% if @page > 1 %>
+        <%= link_to "←", url_for(request.params.merge(page: @page - 1))%>
+      <% else %>
+        <span>←</span>
+      <% end %>
+      <span>Page <%= @page %> of <%= @total_pages %></span>
+      <% if @page < @total_pages %>
+        <%= link_to "→", url_for(request.params.merge(page: @page + 1))%>
+      <% else %>
+        <span>→</span>
+      <% end %>
+    </div>
+  <% end %>
 </main>

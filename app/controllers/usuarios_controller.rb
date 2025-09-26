@@ -1,7 +1,10 @@
 class UsuariosController < ApplicationController
   before_action :authenticate_user!
-  
+
     def index
+      @page = params.fetch(:page, 1).to_i
+      per_page = 6
+
       query = Usuario.order(:cpf)
 
       if params[:search].present?
@@ -9,7 +12,9 @@ class UsuariosController < ApplicationController
         query = query.where("regexp_replace(cpf, '[^0-9]', '', 'g') ILIKE ?", "%#{numbers_only}%")
       end
 
-      @usuarios = query
+      @total_usuarios = query.count
+      @usuarios = query.offset((@page - 1) * per_page).limit(per_page)
+      @total_pages = (@total_usuarios / per_page.to_f).ceil
     end
   
   def show
