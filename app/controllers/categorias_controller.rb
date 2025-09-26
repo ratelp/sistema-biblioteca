@@ -4,11 +4,18 @@ class CategoriasController < ApplicationController
 
   # GET /categorias or /categorias.json
   def index
-    @categorias = Categoria.all
+    query = Categoria.order(:nome)
+
+    if params[:search].present?
+      query = query.where("nome ILIKE ?", "%#{params[:search]}%")
+    end
+
+    @categorias = query
   end
 
   # GET /categorias/1 or /categorias/1.json
   def show
+    @livros = @categoria.livros
   end
 
   # GET /categorias/new

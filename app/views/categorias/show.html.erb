@@ -13,10 +13,22 @@
       <strong class="details-label">Nome:</strong>
       <span class="details-value"><%= @categoria.nome %></span>
     </div>
+
+    <div class="details-item">
+      <strong class="details-label">Livros da categoria:</strong>
+      <div class="details-value">
+        <% if @livros.any? %>
+          <% @livros.each do |livro| %>
+            <br>
+            <div><%= link_to "#{livro.titulo} - #{livro.autor}", livro_path(livro) %></div>
+          <% end %>
+        <% else %>
+            <br>
+          <span>Não há livros nesta categoria.</span>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="action-buttons">
-    <%= link_to "Editar esta categoria", edit_categoria_path(@categoria), class: "btn btn-primary" %>
-    <%= button_to "Excluir esta categoria", @categoria, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Você tem certeza?' } } %>
-  </div>
+  <div class="action-buttons"> <%= link_to "Editar esta categoria", edit_categoria_path(@categoria), class: "btn btn-primary" %> <%= button_to "Excluir esta categoria", @categoria, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Você tem certeza?' } } %> </div>
 </main>
