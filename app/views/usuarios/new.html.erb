@@ -1,28 +1,11 @@
-<h1>Cadastrar Novo Usuário</h1>
+<% content_for :title, t('.title') %>
 
-<%= form_with(model: @usuario) do |form| %>
-        
-        <div>
-            <%= form.label :name, style: "display: block" %>
-            <%= form.text_field :name %>
-        </div> 
+<main class="content-container">
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+  </div>
 
-        <div>
-            <%= form.label :cpf, style: "display: block" %>
-            <%= form.text_field :cpf %>
-        </div> 
-
-        <div>
-            <%= form.label :email, style: "display: block" %>
-            <%= form.text_field :email %>
-        </div> 
-
-        <div>
-            <%= form.label :number, style: "display: block" %>
-            <%= form.text_field :number %>
-        </div> 
-
-        <div>
-          <%= form.submit %>
-        </div>
-<% end %>
+  <div class="form-card">
+    <%= render "form", usuario: @usuario %>
+  </div>
+</main>

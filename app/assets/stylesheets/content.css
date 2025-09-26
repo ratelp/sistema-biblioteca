@@ -110,6 +110,13 @@
   margin-bottom: 2rem;
 }
 
+.details-card-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
 .details-item {
   margin-bottom: 1rem;
   font-size: 1.1rem;

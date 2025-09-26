@@ -1,0 +1,39 @@
+<%= form_with(model: usuario, class: "content-form") do |form| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= t('errors.messages.not_saved', count: usuario.errors.count, resource: Usuario.model_name.human) %></h2>
+      <ul>
+        <% usuario.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-controller="mask">
+    <div class="form-group">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control", required: true, autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :cpf, class: "form-label" %>
+      <%= form.text_field :cpf, class: "form-control", required: true, data: { action: "input->mask#cpf" } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :number, class: "form-label" %>
+      <%= form.text_field :number, class: "form-control", required: true, data: { action: "input->mask#phone" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit t('helpers.submit.submit', model: Usuario.model_name.human), class: "btn btn-primary" %>
+    <%= link_to t('helpers.back'), usuarios_path, class: "btn btn-danger" %>
+  </div>
+<% end %>

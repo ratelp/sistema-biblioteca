@@ -6,13 +6,22 @@ pt-BR:
         email: "Email"
         password: "Senha"
     models:
+      emprestimo: "Empréstimo"
       livro: "Livro"
+      usuario: "Usuário"
     attributes:
       livro:
         titulo: "Título"
         autor: "Autor"
         categoria: "Categoria"
         observacoes: "Observações"
+      emprestimo:
+        cpf: "CPF do Usuário"
+      usuario:
+        name: "Nome"
+        cpf: "CPF"
+        email: "Email"
+        number: "Número"
   sessions:
     new:
       title: "Entrar"
@@ -91,3 +100,23 @@ pt-BR:
       destroy: "Excluir"
       lend: "Emprestar"
     back_to_livros: "Voltar para livros"
+  usuarios:
+    index:
+      title: "Usuários"
+    new:
+      title: "Novo Usuário"
+    show:
+      title: "Detalhes do Usuário"
+      edit: "Editar"
+      destroy: "Excluir"
+      current_loan: "Empréstimo Atual"
+      book_borrowed: "Livro"
+      return_date: "Data de devolução"
+    back_to_usuarios: "Voltar para usuários"
+    edit:
+      title: "Editar Usuário"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"

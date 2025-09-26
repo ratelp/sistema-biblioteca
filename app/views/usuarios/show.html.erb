@@ -1,41 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @usuario.name %>
 
-<p>Usuário:</p>
+<main class="content-container">
+  <%= render "shared/flash" %>
 
-<div>
-  <p>
-    <strong>Nome:</strong>
-    <%= @usuario.name %>
-  </p>
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+    <%= link_to t('usuarios.back_to_usuarios'), usuarios_path, class: "btn btn-secondary" %>
+  </div>
 
-  <p>
-    <strong>Email:</strong>
-    <%= @usuario.email %>
-  </p>
-
-  <p>
-    <strong>Cpf:</strong>
-    <%= @usuario.cpf %>
-  </p>
-
-  <p>
-    <strong>Número:</strong>
-    <%= @usuario.number %>
-  </p>
+  <div class="details-card">
+    <div class="details-item">
+      <strong class="details-label"><%= Usuario.human_attribute_name(:name) %>:</strong>
+      <span class="details-value"><%= @usuario.name %></span>
+    </div>
+    <div class="details-item">
+      <strong class="details-label"><%= Usuario.human_attribute_name(:email) %>:</strong>
+      <span class="details-value"><%= @usuario.email %></span>
+    </div>
+    <div class="details-item">
+      <strong class="details-label"><%= Usuario.human_attribute_name(:cpf) %>:</strong>
+      <span class="details-value"><%= @usuario.cpf %></span>
+    </div>
+    <div class="details-item">
+      <strong class="details-label"><%= Usuario.human_attribute_name(:number) %>:</strong>
+      <span class="details-value"><%= @usuario.number %></span>
+    </div>
+  </div>
 
   <% if @usuario.emprestimos.exists? %>
-  <p>
-    <strong>Livro alugado:</strong>
-    <%= link_to "Livro #{@emprestimo_atual.livro.titulo}", livro_path(@emprestimo_atual.livro.id)%>
-    <br>
-    <strong>Data de devolução máxima:</strong>
-    <%= l @emprestimo_atual.data_devolucao %>
-    
-  </p>
+    <div class="details-card">
+      <h3 class="details-card-title"><%= t('.current_loan') %></h3>
+      <div class="details-item">
+        <strong class="details-label"><%= t('.book_borrowed') %>:</strong>
+        <span class="details-value"><%= link_to @emprestimo_atual.livro.titulo, livro_path(@emprestimo_atual.livro) %></span>
+      </div>
+      <div class="details-item">
+        <strong class="details-label"><%= t('.return_date') %>:</strong>
+        <span class="details-value"><%= l @emprestimo_atual.data_devolucao %></span>
+      </div>
+    </div>
   <% end %>
-</div>
-
-
-<div>
-  <%= link_to "Retornar", usuarios_path %>
-</div>
+</main>

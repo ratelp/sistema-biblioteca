@@ -1,28 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, t('.title') %>
 
-<p>Usuários:</p>
+<main class="content-container">
+  <%= render "shared/flash" %>
 
-<%= link_to "Novo usuário", new_usuario_path %>
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+    <%= link_to t('usuarios.new.title'), new_usuario_path, class: "btn btn-primary" %>
+  </div>
 
-<% @usuarios.each do |usuario| %>
-
-<div>
-    <p>
-        <strong>Nome:</strong>
-        <%= usuario.name %>
-    </p>
-
-    <p>
-        <strong>Cpf:</strong>
-        <%= usuario.cpf %>
-    </p>
-
-    <div>
-        <%= link_to "Mostrar usuaŕio", usuario_path(usuario) %>
-    </div>
-
-  <br>
-</div>
-
-<% end %>
-
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th><%= Usuario.human_attribute_name(:name) %></th>
+        <th><%= Usuario.human_attribute_name(:cpf) %></th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @usuarios.each do |usuario| %>
+        <%= render "usuario_row", usuario: usuario %>
+      <% end %>
+    </tbody>
+  </table>
+</main>
