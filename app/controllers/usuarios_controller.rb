@@ -2,7 +2,14 @@ class UsuariosController < ApplicationController
   before_action :authenticate_user!
   
     def index
-      @usuarios = Usuario.all
+      query = Usuario.order(:cpf)
+
+      if params[:search].present?
+        numbers_only = params[:search].gsub(/\D/, '')
+        query = query.where("regexp_replace(cpf, '[^0-9]', '', 'g') ILIKE ?", "%#{numbers_only}%")
+      end
+
+      @usuarios = query
     end
   
   def show

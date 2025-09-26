@@ -3,7 +3,13 @@ class BibliotecariosController < ApplicationController
   before_action :only_administrador, only: [:index, :new, :create, :destroy]
 
   def index
-    @bibliotecarios = Bibliotecario.all
+    query = Bibliotecario.order(:email)
+
+    if params[:search].present?
+      query = query.where("email ILIKE ?", "%#{params[:search]}%")
+    end
+
+    @bibliotecarios = query
   end
 
   def new

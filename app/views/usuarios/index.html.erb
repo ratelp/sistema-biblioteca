@@ -8,6 +8,11 @@
     <%= link_to t('usuarios.new.title'), new_usuario_path, class: "btn btn-primary" %>
   </div>
 
+  <%= form_with(url: usuarios_path, method: :get, local: true) do %>
+    <%= label_tag :search, "Buscar: " %>
+    <%= text_field_tag :search, params[:search], placeholder: "Procurar pelo CPF" %>
+  <% end %>
+
   <table class="content-table">
     <thead>
       <tr>
