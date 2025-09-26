@@ -1,38 +1,29 @@
-<%= form_with(model: livro) do |form| %>
-  <% if livro.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(livro.errors.count, "error") %> prohibited this livro from being saved:</h2>
+<%= form_with(model: livro, class: "content-form") do |form| %>
+  <%= render "shared/flash" %>
 
-      <ul>
-        <% livro.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :autor, style: "display: block" %>
-    <%= form.text_field :autor %>
+  <div class="form-group">
+    <%= form.label :titulo, class: "form-label" %>
+    <%= form.text_field :titulo, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :titulo, style: "display: block" %>
-    <%= form.text_field :titulo %>
+  <div class="form-group">
+    <%= form.label :autor, class: "form-label" %>
+    <%= form.text_field :autor, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :categoria_id, style: "display: block" %>
+  <div class="form-group">
+    <%= form.label :categoria_id, class: "form-label" %>
     <%= form.select :categoria_id, @categorias.map { |pt| [pt.nome.titleize, pt.id] },
-                                                     { prompt: "Selecione categoria" } %>
-  </div> 
-
-  <div>
-    <%= form.label :observacoes, style: "display: block" %>
-    <%= form.textarea :observacoes %>
+                                                     { prompt: "Selecione uma categoria" }, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.label :observacoes, class: "form-label" %>
+    <%= form.text_area :observacoes, class: "form-control", rows: 4, maxlength: 300 %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit t('helpers.submit.submit', model: Livro.model_name.human), class: "btn btn-primary" %>
+    <%= link_to t('livros.back_to_livros'), livros_path, class: "btn btn-danger" %>
   </div>
 <% end %>

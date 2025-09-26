@@ -1,16 +1,26 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Livros" %>
 
-<h1>Livros</h1>
+<main class="content-container">
+  <%= render "shared/flash" %>
 
-<div id="livros">
-  <% @livros.each do |livro| %>
-    <%= render livro %>
-    <p>
-      <%= link_to "Show this livro", livro %>
-    </p>
-  <% end %>
-</div>
+  <div class="page-header">
+    <h1>Livros</h1>
+    <%= link_to t('livros.new.title'), new_livro_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to "New livro", new_livro_path %>
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th><%= Livro.human_attribute_name(:titulo) %></th>
+        <th><%= Livro.human_attribute_name(:autor) %></th>
+        <th><%= Livro.human_attribute_name(:categoria) %></th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @livros.each do |livro| %>
+        <%= render "livro_row", livro: livro %>
+      <% end %>
+    </tbody>
+  </table>
+</main>

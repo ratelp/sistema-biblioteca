@@ -1,11 +1,11 @@
-<% content_for :title, "New livro" %>
+<% content_for :title, t('.title') %>
 
-<h1>New livro</h1>
+<main class="content-container">
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+  </div>
 
-<%= render "form", livro: @livro %>
-
-<br>
-
-<div>
-  <%= link_to "Back to livros", livros_path %>
-</div>
+  <div class="form-card">
+    <%= render "form", livro: @livro %>
+  </div>
+</main>

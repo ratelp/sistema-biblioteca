@@ -67,6 +67,16 @@
   background-color: #c82333;
 }
 
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
 .content-table {
   width: 100%;
   border-collapse: collapse;
@@ -109,6 +119,10 @@
   font-weight: 600;
   color: #495057;
   margin-right: 0.5rem;
+}
+
+.details-value {
+  overflow-wrap: break-word;
 }
 
 .action-buttons {
@@ -166,4 +180,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+textarea {
+  resize: none;
 }
