@@ -1,0 +1,17 @@
+<% if @total_pages.to_i > 1 %>
+  <div class="pagination-container">
+    <% if @page > 1 %>
+      <%= link_to "← Anterior", url_for(request.params.merge(page: @page - 1)), class: "pagination-link" %>
+    <% else %>
+      <span class="pagination-disabled">← Anterior</span>
+    <% end %>
+
+    <span class="pagination-info">Página <%= @page %> de <%= @total_pages %></span>
+
+    <% if @page < @total_pages %>
+      <%= link_to "Próximo →", url_for(request.params.merge(page: @page + 1)), class: "pagination-link" %>
+    <% else %>
+      <span class="pagination-disabled">Próximo →</span>
+    <% end %>
+  </div>
+<% end %>

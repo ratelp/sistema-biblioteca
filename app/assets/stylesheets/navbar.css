@@ -1,6 +1,7 @@
 
 
 .main-navbar {
+  font-family: sans-serif;
   background-color: #343a40; 
   padding: 0 2rem;
   display: flex;

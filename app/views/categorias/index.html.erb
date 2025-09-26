@@ -8,11 +8,10 @@
     <%= link_to "Nova categoria", new_categoria_path, class: "btn btn-primary" %>
   </div>
 
-  <%= form_with(url: categorias_path, method: :get, local: true) do %>
-    <%= label_tag :search, "Buscar: " %>
+  <%= form_with(url: categorias_path, method: :get, local: true, html: { class: "search-form" }) do %>
+    <%= label_tag :search, "Buscar" %>
     <%= text_field_tag :search, params[:search], placeholder: "Procurar pelo nome" %>
   <% end %>
-
 
   <table class="content-table">
     <thead>
@@ -28,19 +27,5 @@
     </tbody>
   </table>
 
-  <% if @total_pages.to_i > 1 %>
-    <div>
-      <% if @page > 1 %>
-        <%= link_to "←", url_for(request.params.merge(page: @page - 1))%>
-      <% else %>
-        <span>←</span>
-      <% end %>
-      <span>Page <%= @page %> of <%= @total_pages %></span>
-      <% if @page < @total_pages %>
-        <%= link_to "→", url_for(request.params.merge(page: @page + 1))%>
-      <% else %>
-        <span>→</span>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "shared/pagination" %>
 </main>

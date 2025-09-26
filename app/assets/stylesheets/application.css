@@ -12,6 +12,7 @@
 @import "navbar.css"; 
 @import "login.css";  
 @import "content.css";
+@import "components.css";
 
 body { 
     margin: 0px;
