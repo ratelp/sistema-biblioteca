@@ -1,11 +1,12 @@
-<% content_for :title, "Nova categoria" %>
+<% content_for :title, t('.title') %>
 
-<h1>Nova categoria</h1>
+<main class="content-container">
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+    <%= link_to t('.back'), categorias_path, class: "btn btn-secondary" %>
+  </div>
 
-<%= render "form", categoria: @categoria %>
-
-<br>
-
-<div>
-  <%= link_to "Back to categoria", categorias_path %>
-</div>
+  <div class="form-card">
+    <%= render "form", categoria: @categoria %>
+  </div>
+</main>

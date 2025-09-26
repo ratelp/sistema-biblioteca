@@ -1,16 +1,24 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Categoria" %>
 
-<h1>Categoria</h1>
+<main class="content-container">
+  <%= render "shared/flash" %>
 
-<div id="categoria">
-  <% @categorias.each do |categoria| %>
-    <%= render categoria %>
-    <p>
-      <%= link_to "Mostrar categoria", categoria %>
-    </p>
-  <% end %>
-</div>
+  <div class="page-header">
+    <h1>Categorias</h1>
+    <%= link_to "Nova categoria", new_categoria_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to "Nova categoria", new_categoria_path %>
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categorias.each do |categoria| %>
+        <%= render "categoria_row", categoria: categoria %>
+      <% end %>
+    </tbody>
+  </table>
+</main>

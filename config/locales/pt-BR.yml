@@ -57,3 +57,14 @@ pt-BR:
       blank: "não pode ficar em branco"
       invalid: "é inválido"
       taken: "já está em uso"
+  categorias:
+    new:
+      title: "Nova Categoria"
+      back: "Voltar para categorias"
+    edit:
+      title: "Editar Categoria"
+      show: "Mostrar"
+      back: "Voltar para categorias"
+  helpers:
+    submit:
+      submit: "Salvar %{model}"

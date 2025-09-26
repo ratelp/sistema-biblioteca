@@ -1,10 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @categoria.nome %>
 
-<%= render @categoria %>
+<main class="content-container">
+  <%= render "shared/flash" %>
 
-<div>
-  <%= link_to "Edit this categoria", edit_categoria_path(@categoria) %> |
-  <%= link_to "Back to categoria", categorias_path %>
+  <div class="page-header">
+    <h1>Detalhes da Categoria</h1>
+    <%= link_to "Voltar para categorias", categorias_path, class: "btn btn-secondary" %>
+  </div>
 
-  <%= button_to "Destroy this categoria", @categoria, method: :delete %>
-</div>
+  <div class="details-card">
+    <div class="details-item">
+      <strong class="details-label">Nome:</strong>
+      <span class="details-value"><%= @categoria.nome %></span>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <%= link_to "Editar esta categoria", edit_categoria_path(@categoria), class: "btn btn-primary" %>
+    <%= button_to "Excluir esta categoria", @categoria, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Você tem certeza?' } } %>
+  </div>
+</main>

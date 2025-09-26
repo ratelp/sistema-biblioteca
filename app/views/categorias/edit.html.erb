@@ -1,12 +1,11 @@
-<% content_for :title, "Editing categoria" %>
+<% content_for :title, t('.title') %>
 
-<h1>Editing categoria</h1>
+<main class="content-container">
+  <div class="page-header">
+    <h1><%= t('.title') %></h1>
+  </div>
 
-<%= render "form", categoria: @categoria %>
-
-<br>
-
-<div>
-  <%= link_to "Show this categoria", @categoria %> |
-  <%= link_to "Back to categoria", categorias_path %>
-</div>
+  <div class="form-card">
+    <%= render "form", categoria: @categoria %>
+  </div>
+</main>
