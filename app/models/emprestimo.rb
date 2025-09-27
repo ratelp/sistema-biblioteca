@@ -21,7 +21,30 @@ class Emprestimo < ApplicationRecord
     end
   end
 
+  def marcar_como_devolvido!
+    transaction do
+      update!(devolvido: true)
+      livro.update!(status: :disponivel)
+    end
+  end
+
+  def calculate_due_date
+    date = Date.today
+    days_added = 0
+
+    while days_added < 15
+      date += 1.day
+      days_added += 1 unless date.saturday? || date.sunday?
+    end
+  
+    date.to_date
+  end
+
+  def renovar!
+    update!(data_devolucao: calculate_due_date)
+  end
+
   def set_due_date
-    self.data_devolucao ||= 15.days.from_now.to_date
+    self.data_devolucao ||= calculate_due_date
   end
 end

@@ -29,3 +29,9 @@
 
 en:
   hello: "Hello world"
+  usuarios:
+    show:
+      return_book: "Return Book"
+      renew_loan: "Renew Loan"
+      confirm_return: "Confirm return?"
+      confirm_renewal: "Confirm renewal?\n(This will renew the loan for another 15 business days)"

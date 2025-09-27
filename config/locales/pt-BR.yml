@@ -117,6 +117,10 @@ pt-BR:
       current_loan: "Empréstimo Atual"
       book_borrowed: "Livro"
       return_date: "Data de devolução"
+      return_book: "Devolver"
+      renew_loan: "Renovar"
+      confirm_return: "Confirmar devolução?"
+      confirm_renewal: "Confirmar Renovação?\n(irá renovar por mais 15 dias úteis)"
     back_to_usuarios: "Voltar para usuários"
     edit:
       title: "Editar Usuário"

@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   resources :categorias
 
   resources :livros do
-    resources :emprestimos, only: [ :new, :create ]
+    resources :emprestimos, only: [ :new, :create ] do
+      member do
+        patch :devolver
+        patch :renovar
+      end
+    end
   end
 
   # utilizando login unificado entre usuarios e administradores

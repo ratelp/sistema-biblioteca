@@ -2,6 +2,6 @@
   <td><%= bibliotecario.nome %></td>
   <td><%= bibliotecario.email %></td>
   <td>
-    <%= button_to t('.destroy'), bibliotecario, method: :delete, class: "btn btn-danger btn-sm", form: { data: { turbo_confirm: t('helpers.confirm.are_you_sure') } } %>
+    <%= button_to "Excluir", bibliotecario, method: :delete, class: "btn btn-danger btn-sm", form: { data: { turbo_confirm: t('helpers.confirm.are_you_sure') } } %>
   </td>
 </tr>

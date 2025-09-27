@@ -1,6 +1,23 @@
 class EmprestimosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_livro, only: [ :new, :create ]
+  before_action :set_livro, only: [ :new, :create, :devolver, :renovar ]
+  before_action :set_emprestimo, only: [ :devolver, :renovar ]
+
+  def devolver
+    if @emprestimo.marcar_como_devolvido!
+      redirect_to usuario_path(@emprestimo.usuario), notice: "Livro devolvido com sucesso!"
+    else
+      redirect_to usuario_path(@emprestimo.usuario), notice: "Ocorreu erro ao devolver livro!"
+    end
+  end
+
+  def renovar
+    if @emprestimo.renovar!
+      redirect_to usuario_path(@emprestimo.usuario), notice: "Livro renovado com sucesso!"
+    else
+      redirect_to usuario_path(@emprestimo.usuario), notice: "Ocorreu erro ao renovar livro!"
+    end
+  end
 
   def new
     @emprestimo = @livro.emprestimos.build
@@ -28,5 +45,10 @@ class EmprestimosController < ApplicationController
 
   def set_livro
     @livro = Livro.find(params[:livro_id])
+  end
+
+
+  def set_emprestimo
+    @emprestimo = @livro.emprestimos.find(params[:id])
   end
 end

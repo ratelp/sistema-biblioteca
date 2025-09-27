@@ -27,16 +27,30 @@
     </div>
   </div>
 
-  <% if @usuario.emprestimos.exists? %>
-    <div class="details-card">
-      <h3 class="details-card-title"><%= t('.current_loan') %></h3>
-      <div class="details-item">
-        <strong class="details-label"><%= t('.book_borrowed') %>:</strong>
-        <span class="details-value"><%= link_to @emprestimo_atual.livro.titulo, livro_path(@emprestimo_atual.livro) %></span>
+  <% if @usuario.emprestimos.exists? && !@emprestimo_atual.devolvido? %>
+    <div class="details-card d-flex justify-content-between align-items-start">
+      <div>
+        <h3 class="details-card-title"><%= t('.current_loan') %></h3>
+        <div class="details-item">
+          <strong class="details-label"><%= t('.book_borrowed') %>:</strong>
+          <span class="details-value"><%= link_to @emprestimo_atual.livro.titulo, livro_path(@emprestimo_atual.livro) %></span>
+        </div>
+        <div class="details-item">
+          <strong class="details-label"><%= t('.return_date') %>:</strong>
+          <span class="details-value"><%= l @emprestimo_atual.data_devolucao %></span>
+        </div>
       </div>
-      <div class="details-item">
-        <strong class="details-label"><%= t('.return_date') %>:</strong>
-        <span class="details-value"><%= l @emprestimo_atual.data_devolucao %></span>
+      <div class="action-buttons d-flex flex-column gap-2">
+        <%= button_to t('.return_book'),
+                devolver_livro_emprestimo_path(@emprestimo_atual.livro.id, @emprestimo_atual.id),
+                method: :patch,
+                class: "btn btn-success btn-sm",
+                form: { data: { turbo_confirm: t('.confirm_return') } } %>
+        <%= button_to t('.renew_loan'),
+                renovar_livro_emprestimo_path(@emprestimo_atual.livro.id, @emprestimo_atual.id),
+                method: :patch,
+                class: "btn btn-info btn-sm",
+                form: { data: { turbo_confirm: t('.confirm_renewal') } } %>
       </div>
     </div>
   <% end %>
