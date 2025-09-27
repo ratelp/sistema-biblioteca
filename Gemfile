@@ -45,7 +45,7 @@ gem "thruster", require: false
 
 gem 'devise'
 gem 'dotenv-rails'
-
+gem 'whenever', require: false
 
 
 group :development, :test do

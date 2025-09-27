@@ -7,17 +7,7 @@ class Emprestimo < ApplicationRecord
   validate :livro_deve_estar_disponivel, on: :create
   validate :usuario_deve_estar_disponivel, on: :create
 
-  def data_devolucao
-    date = created_at
-    days_added = 0
-
-    while days_added < 15
-      date += 1.day
-      days_added += 1 unless date.saturday? || date.sunday?
-    end
-
-    date.to_date
-  end
+  before_create :set_due_date
 
   def livro_deve_estar_disponivel
     if livro.emprestado?
@@ -29,5 +19,9 @@ class Emprestimo < ApplicationRecord
     if usuario.emprestimos.ativos.exists?
       errors.add(:usuario, "já possui livro emprestado")
     end
+  end
+
+  def set_due_date
+    self.data_devolucao ||= 15.days.from_now.to_date
   end
 end

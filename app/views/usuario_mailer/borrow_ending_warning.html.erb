@@ -1,0 +1,3 @@
+<p>Olá <%= @user.name %>,</p>
+<p>Seu empréstimo do livro <strong><%= @borrow.livro.titulo %></strong> se encerrará amanhã dia <%= @borrow.data_devolucao.strftime("%d/%m/%Y") %>.</p>
+<p>Pedimos que venha efetuar a devolução ou a renovação de empréstimo do livro.</p>
