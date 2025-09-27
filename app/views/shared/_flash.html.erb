@@ -1,6 +1,10 @@
-<% if notice.present? %>
-    <div class="alert alert-success"><%= notice %></div>
-<% end %>
-<% if alert.present? %>
-    <div class="alert alert-danger"><%= alert %></div>
+<% flash.each do |key, message| %>
+  <%
+    alert_class = case key.to_sym
+                  when :notice then "alert-success"
+                  when :alert, :error then "alert-danger"
+                  else "alert-info"
+                  end
+  %>
+  <div class="alert <%= alert_class %>"><%= message %></div>
 <% end %>

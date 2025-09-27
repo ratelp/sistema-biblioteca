@@ -7,7 +7,6 @@ class EmprestimosController < ApplicationController
   end
 
   def create
-
     emprestimo = params[:emprestimo]
     @usuario = Usuario.find_by(cpf: emprestimo[:cpf])
 
@@ -17,7 +16,7 @@ class EmprestimosController < ApplicationController
         @livro.emprestado!
         redirect_to @livro, notice: "Livro emprestado com sucesso!"
       else
-        flash.now[:alert] = "Erro ao criar empréstimo."
+        flash.now[:alert] = @emprestimo.errors.full_messages.to_sentence
         render :new, status: :unprocessable_entity
       end
     else

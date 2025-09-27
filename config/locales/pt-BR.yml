@@ -132,3 +132,8 @@ pt-BR:
       default: "%d/%m/%Y"
       short: "%d de %b"
       long: "%d de %B de %Y"
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " e "
+      last_word_connector: ", e "

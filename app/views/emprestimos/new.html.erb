@@ -1,14 +1,15 @@
-<% content_for :title, t('.title') %>
+<% content_for :title, "Emprestar" %>
 
 <main class="content-container">
   <div class="page-header">
-    <h1><%= t('.title_with_book', book_title: @livro.titulo) %></h1>
+    <h1><%= "Emprestar #{@livro.titulo}" %></h1>
     <%= link_to t('livros.back_to_livros'), livros_path, class: "btn btn-secondary" %>
   </div>
 
+  <%= render "shared/flash" %>
+
   <div class="form-card">
     <%= form_with(model: [@livro, @emprestimo], class: "content-form") do |form| %>
-      <%= render "shared/flash" %>
 
       <div class="form-group">
         <%= form.label :cpf, class: "form-label" %>
