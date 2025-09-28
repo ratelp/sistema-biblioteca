@@ -5,6 +5,8 @@
     <h1><%= t('.title') %></h1>
   </div>
 
+  <%= render "shared/form_errors", object: @usuario %>
+
   <div class="form-card">
     <%= render "form", usuario: @usuario %>
   </div>

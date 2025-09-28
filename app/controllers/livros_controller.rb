@@ -38,7 +38,7 @@ class LivrosController < ApplicationController
 
     respond_to do |format|
       if @livro.save
-        format.html { redirect_to @livro, notice: "Livro was successfully created." }
+        format.html { redirect_to @livro, notice: "Livro criado com sucesso." }
         format.json { render :show, status: :created, location: @livro }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class LivrosController < ApplicationController
   def update
     respond_to do |format|
       if @livro.update(livro_params)
-        format.html { redirect_to @livro, notice: "Livro was successfully updated.", status: :see_other }
+        format.html { redirect_to @livro, notice: "Livro atualizado com sucesso.", status: :see_other }
         format.json { render :show, status: :ok, location: @livro }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class LivrosController < ApplicationController
     @livro.destroy!
 
     respond_to do |format|
-      format.html { redirect_to livros_path, notice: "Livro was successfully destroyed.", status: :see_other }
+      format.html { redirect_to livros_path, notice: "Livro excluído com sucesso.", status: :see_other }
       format.json { head :no_content }
     end
   end

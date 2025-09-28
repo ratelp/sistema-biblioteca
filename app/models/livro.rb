@@ -6,4 +6,6 @@ class Livro < ApplicationRecord
   has_many :emprestimos, dependent: :destroy
 
   validates :observacoes, length: { maximum: 300 }
+  validates :titulo, presence: true
+  validates :autor, presence: true
 end

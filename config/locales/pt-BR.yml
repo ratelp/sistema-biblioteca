@@ -1,19 +1,26 @@
 pt-BR:
   hello: "Olá Mundo"
+  defaults:
+    messages:
+      created: "%{model} foi criado(a) com sucesso."
+      updated: "%{model} foi atualizado(a) com sucesso."
+      destroyed: "%{model} foi excluído(a) com sucesso."
   activerecord:
-    attributes:
-      user:
-        email: "Email"
-        password: "Senha"
     models:
       bibliotecario: "Bibliotecário"
       emprestimo: "Empréstimo"
       livro: "Livro"
       usuario: "Usuário"
+      categoria: "Categoria"
     attributes:
+      user:
+        email: "Email"
+        password: "Senha"
       bibliotecario:
         nome: "Nome"
         email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmação da senha"
       livro:
         titulo: "Título"
         autor: "Autor"
@@ -80,6 +87,9 @@ pt-BR:
       invalid: "é inválido"
       taken: "já está em uso"
       too_long: "é muito longo (máximo de %{count} caracteres)"
+      required: "é obrigatório"
+      too_short: "é muito curta (mínimo de %{count} caracteres)"
+      confirmation: "não confere com %{attribute}"
   categorias:
     new:
       title: "Nova Categoria"
