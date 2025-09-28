@@ -63,6 +63,7 @@ pt-BR:
         confirm_new_password: "Confirme sua nova senha"
         submit: "Alterar minha senha"
         minimum_password_length: "mínimo de %{count} caracteres"
+      updated: "Sua senha foi alterada com sucesso. Você agora está logado."
     registrations:
       edit:
         title: "Atualize sua senha"
